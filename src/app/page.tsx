@@ -27,14 +27,14 @@ const GET_PRODUCTS = gql`
 
 export default async function HomePage() {
   const client = createApolloClient();
-  const { data } = await client.query<{ products: { items: Product[] } }>({
-    query: GET_PRODUCTS,
-  });
+  // const { data } = await client.query<{ products: { items: Product[] } }>({
+  //   query: GET_PRODUCTS,
+  // });
 
   return (
     <div>
       <h1>Welcome to Our Store</h1>
-      <PopularProducts products={data.products.items} />
+      {/* <PopularProducts products={data.products.items} /> */}
     </div>
   );
 }

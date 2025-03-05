@@ -3,7 +3,6 @@ import ApolloProviderWrapper from '@/lib/apollo-provider';
 import { CartProvider } from '@/store/cart';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
-import '@/styles/globals.css';
 
 export const metadata: Metadata = {
   title: 'Tire Shop',
@@ -20,8 +19,6 @@ export default function RootLayout({
       <body>
         <ApolloProviderWrapper>
           <CartProvider>
-            {' '}
-            {/* ✅ Wrap the entire app with CartProvider */}
             <Header />
             <main>{children}</main>
             <Footer />
