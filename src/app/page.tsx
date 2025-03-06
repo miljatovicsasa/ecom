@@ -2,6 +2,8 @@ import createApolloClient from '@/lib/apollo-client';
 import { gql } from '@apollo/client';
 import PopularProducts from '@/components/homepage/PopularProducts';
 import { Product } from '@/types/product';
+import { Box, Container, Link, Typography } from '@mui/material';
+import Carousel from '@/components/ui/Carousel';
 
 const GET_PRODUCTS = gql`
   query GetProducts {
@@ -32,9 +34,37 @@ export default async function HomePage() {
   // });
 
   return (
-    <div>
-      <h1>Welcome to Our Store</h1>
+    <Box
+      sx={{
+        height: 'auto',
+        width: '100%',
+      }}
+    >
+      <Box
+        component="img"
+        sx={{
+          height: 'auto',
+          width: '100%',
+        }}
+        alt="Hero"
+        src="/images/hero.jpg"
+      />
+
+      <Container maxWidth="md">
+        <Typography
+          variant="h4"
+          align="center"
+          sx={{ mt: 4, mb: 2, fontWeight: 'bold' }}
+        >
+          Save with Rebates and Promotions
+        </Typography>
+      </Container>
+
+      <Container maxWidth="lg">
+        <Carousel />
+      </Container>
+
       {/* <PopularProducts products={data.products.items} /> */}
-    </div>
+    </Box>
   );
 }
