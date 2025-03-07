@@ -5,8 +5,6 @@ import { Product } from '@/types/product';
 import { Box, Button, Container, Link, Typography } from '@mui/material';
 import Carousel from '@/components/ui/Carousel';
 import { promotionsInfo } from '@/data/promotions';
-import ContentCopyIcon from '@mui/icons-material/ContentCopy';
-import ButtonSquared from '@/components/ui/ButtonSquared';
 import PromotionButton from '@/components/ui/PromotionButton';
 import { colors } from '@/theme/theme';
 

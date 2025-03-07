@@ -1,14 +1,19 @@
 'use client';
 
 import { Button } from '@mui/material';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { colors } from '@/theme/theme';
 import { ReactNode } from 'react';
 
-const handleCopy = () => {
-  navigator.clipboard.writeText('FIRST5');
-  alert('Coupon code copied!');
-};
+interface ButtonSquaredProps {
+  label: ReactNode;
+  onClick?: () => void;
+  textTransform?: 'uppercase' | 'capitalize' | 'lowercase' | 'none';
+  fontSize?: string;
+  fontWeight?: string;
+  color?: string;
+  border?: string;
+  margin?: string;
+}
 
 export default function ButtonSquared({
   label,
@@ -18,15 +23,8 @@ export default function ButtonSquared({
   fontWeight = 'bold',
   color = colors.textSecondary,
   border = 'none',
-}: {
-  label: ReactNode;
-  onClick?: () => void;
-  textTransform: 'uppercase' | 'capitalize' | 'lowercase' | 'none';
-  fontSize?: string;
-  fontWeight?: string;
-  color?: string;
-  border?: string;
-}) {
+  margin = '15px auto',
+}: ButtonSquaredProps) {
   return (
     <Button
       variant="contained"
@@ -36,15 +34,13 @@ export default function ButtonSquared({
         color,
         fontWeight,
         fontSize,
-        width: 'auto',
-        height: 'auto',
         textTransform,
         display: 'flex',
-        margin: '15px auto',
         alignItems: 'center',
         border,
         boxShadow: 'none',
         gap: '5px',
+        margin,
         '&:hover': {
           backgroundColor: colors.secondaryLighter,
           boxShadow: 'none',
