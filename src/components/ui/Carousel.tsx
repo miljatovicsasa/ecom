@@ -9,52 +9,32 @@ import ButtonRounded from './ButtonRounded';
 import { NextArrow, PrevArrow } from './ArrowButtonCarousel';
 import { colors } from '@/theme/theme';
 
-const promotionsInfo = [
-  {
-    title: 'Mickey Thompson Rebates',
-    dates: 'February 15th - March 31st 2025',
-    image: '/images/crousel_promotion_first.jpg',
-    buttonLabel: 'VIEW OFFER',
-  },
-  {
-    title: 'General Tires Rebates',
-    dates: 'March 1st - April 30th 2025',
-    image: '/images/crousel_promotion_second.jpg',
-    buttonLabel: 'VIEW OFFER',
-  },
-  {
-    title: 'Hankook: Save $200 On Seats of 4',
-    dates: '25th January - 31st March 2025',
-    image: '/images/crousel_promotion_third.jpg',
-    buttonLabel: 'BROWSE TIRES',
-  },
-  {
-    title: 'Pirelli: Save $200 On Seats of 4',
-    dates: '25th January - 31st March 2025',
-    image: '/images/crousel_promotion_fourth.jpg',
-    buttonLabel: 'BROWSE TIRES',
-  },
-  {
-    title: 'Goodyear: Save $200 On Seats of 4',
-    dates: '25th January - 31st March 2025',
-    image: '/images/crousel_promotion_fifth.jpg',
-    buttonLabel: 'BROWSE TIRES',
-  },
-  {
-    title: 'Nexen: Save $200 On Seats of 4',
-    dates: '25th January - 31st March 2025',
-    image: '/images/crousel_promotion_sixt.jpg',
-    buttonLabel: 'BROWSE TIRES',
-  },
-];
+interface CarouselItem {
+  title?: string;
+  dates?: string;
+  image: string;
+  buttonLabel?: string;
+}
 
-const Carousel = () => {
+interface CarouselProps {
+  items: CarouselItem[];
+  slidesToShow?: number;
+  slidesToScroll?: number;
+  infinite?: boolean;
+}
+
+const Carousel: React.FC<CarouselProps> = ({
+  items,
+  slidesToShow = 3,
+  slidesToScroll = 2,
+  infinite = false,
+}) => {
   const settings = {
     dots: true,
-    infinite: false,
+    infinite,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 2,
+    slidesToShow,
+    slidesToScroll,
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -89,7 +69,7 @@ const Carousel = () => {
   return (
     <Box sx={{ width: '100%', maxWidth: '1200px', margin: 'auto', mt: 4 }}>
       <Slider {...settings}>
-        {promotionsInfo.map((promo, index) => (
+        {items.map((item, index) => (
           <Box
             key={index}
             sx={{
@@ -101,7 +81,7 @@ const Carousel = () => {
             }}
           >
             <img
-              src={promo.image}
+              src={item.image}
               alt={`Slide ${index + 1}`}
               style={{
                 width: '100%',
@@ -110,23 +90,27 @@ const Carousel = () => {
                 borderRadius: '5px',
               }}
             />
-            <Typography
-              variant="h6"
-              align="center"
-              sx={{ mt: 2, fontWeight: 'bold' }}
-            >
-              {promo.title}
-            </Typography>
+            {item.title && (
+              <Typography
+                variant="h6"
+                align="center"
+                sx={{ mt: 2, fontWeight: 'bold' }}
+              >
+                {item.title}
+              </Typography>
+            )}
 
-            <ButtonRounded label={promo.buttonLabel} />
+            {item.buttonLabel && <ButtonRounded label={item.buttonLabel} />}
 
-            <Typography
-              variant="h6"
-              align="center"
-              sx={{ mt: 2, fontSize: '1rem' }}
-            >
-              {promo.dates}
-            </Typography>
+            {item.dates && (
+              <Typography
+                variant="h6"
+                align="center"
+                sx={{ mt: 2, fontSize: '1rem' }}
+              >
+                {item.dates}
+              </Typography>
+            )}
           </Box>
         ))}
       </Slider>
