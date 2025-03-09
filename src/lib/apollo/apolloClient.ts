@@ -5,7 +5,6 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
 let apolloClient: ApolloClient<any> | undefined;
 
-// Create Apollo Client singleton instance
 const createApolloClient = () => {
   return new ApolloClient({
     link: new HttpLink({
@@ -16,7 +15,6 @@ const createApolloClient = () => {
   });
 };
 
-// Export the Apollo Client or initialize it if not already created
 const getApolloClient = () => {
   if (!apolloClient) {
     apolloClient = createApolloClient();

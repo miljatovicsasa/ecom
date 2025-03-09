@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { ApolloProvider } from "@apollo/client";
-import getApolloClient from "./apolloClient";
+import { ApolloProvider } from '@apollo/client';
+import getApolloClient from './apolloClient';
 
 export default function ApolloProviderWrapper({
   children,
