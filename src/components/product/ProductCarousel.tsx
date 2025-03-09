@@ -1,5 +1,5 @@
-'use client';
-import { useState } from 'react';
+"use client";
+import { useState } from "react";
 
 interface ProductCarouselProps {
   images: string[];
@@ -22,7 +22,7 @@ export default function ProductCarousel({ images }: ProductCarouselProps) {
             src={img}
             alt="Thumbnail"
             className={`w-16 h-16 cursor-pointer border ${
-              index === currentImage ? 'border-blue-500' : 'border-gray-300'
+              index === currentImage ? "border-blue-500" : "border-gray-300"
             }`}
             onClick={() => setCurrentImage(index)}
           />

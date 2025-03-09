@@ -1,40 +1,12 @@
-import createApolloClient from '@/lib/apollo-client';
 import { gql } from '@apollo/client';
-import PopularProducts from '@/components/homepage/PopularProducts';
-import { Product } from '@/types/product';
 import { Box, Button, Container, Link, Typography } from '@mui/material';
 import Carousel from '@/components/ui/Carousel';
 import { promotionsInfo } from '@/data/promotions';
 import PromotionButton from '@/components/ui/PromotionButton';
 import { colors } from '@/theme/theme';
-
-const GET_PRODUCTS = gql`
-  query GetProducts {
-    products(filter: { category_id: { eq: "4" } }) {
-      items {
-        id
-        name
-        price {
-          regularPrice {
-            amount {
-              value
-              currency
-            }
-          }
-        }
-        image {
-          url
-        }
-      }
-    }
-  }
-`;
+import PopularProductsCarousel from '@/features/products/PopularProducts';
 
 export default async function HomePage() {
-  const client = createApolloClient();
-  // const { data } = await client.query<{ products: { items: Product[] } }>({
-  //   query: GET_PRODUCTS,
-  // });
 
   return (
     <Box
@@ -80,7 +52,7 @@ export default async function HomePage() {
             gap: 2,
           }}
         >
-          {/* Promotion 1*/}
+          
           <Box
             sx={{
               position: 'relative',
@@ -118,7 +90,7 @@ export default async function HomePage() {
               <PromotionButton />
             </Box>
           </Box>
-          {/* Promotion 2 */}
+          
           <Box
             sx={{
               position: 'relative',
@@ -159,7 +131,7 @@ export default async function HomePage() {
               </ul>
             </Box>
           </Box>
-          {/* Promotion 3 */}
+          
           <Box
             sx={{
               position: 'relative',
@@ -199,8 +171,7 @@ export default async function HomePage() {
           </Box>
         </Box>
       </Container>
-
-      {/* <PopularProducts products={data.products.items} /> */}
+      < PopularProductsCarousel />
     </Box>
   );
 }

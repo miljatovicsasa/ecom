@@ -1,21 +1,23 @@
+
 export interface Product {
-  id: string;
   name: string;
   sku: string;
-  price: {
-    regularPrice: {
-      amount: {
+  url_key: string;
+  stock_status: string;
+  price_range: {
+    minimum_price: {
+      regular_price: {
         value: number;
         currency: string;
       };
     };
   };
-  image: {
-    url: string;
-    label?: string;
+  media_gallery: { url: string; label?: string }[];
+  categories: { name: string; url_key: string }[];
+  description: {
+    html: string;
   };
-  configurable_options?: ConfigurableOption[];
-  custom_attributes?: CustomAttribute[];
+  attributes: { name: string; value: string }[];
 }
 
 export interface ConfigurableOption {

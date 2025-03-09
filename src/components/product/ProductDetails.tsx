@@ -5,7 +5,7 @@ import ProductCarousel from '@/components/product/ProductCarousel';
 import ProductOptions from '@/components/product/ProductOptions';
 import ProductSpecifications from '@/components/product/ProductSpecifications';
 import AddToCartButton from '@/components/product/AddToCartButton';
-import { GET_PRODUCT_BY_URL } from '@/lib/graphql/products';
+import { GET_PRODUCT_BY_URL } from '@/lib/queries/products';
 
 interface ProductDetailsProps {
   urlKey: string;

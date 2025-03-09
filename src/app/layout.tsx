@@ -1,13 +1,14 @@
-import type { Metadata } from 'next';
-import ApolloProviderWrapper from '@/lib/apollo-provider';
-import { CartProvider } from '@/store/cart';
-import Header from '@/components/layout/Header';
-import Footer from '@/components/layout/Footer';
-import ThemeRegistry from '@/theme/ThemeRegistry'; // Import the new wrapper
+import type { Metadata } from "next";
+import ApolloProviderWrapper from "@/lib/apollo/apolloProvider";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import { CartProvider } from "@/store/cart";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import ThemeRegistry from "@/theme/ThemeRegistry";
 
 export const metadata: Metadata = {
-  title: 'Tire Shop',
-  description: 'Buy high-quality tires online',
+  title: "Tire Shop",
+  description: "Buy high-quality tires online",
 };
 
 export default function RootLayout({
@@ -17,21 +18,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        <ThemeRegistry>
-          <ApolloProviderWrapper>
-            <CartProvider>
+      <body>
+        <AppRouterCacheProvider>
+          <ThemeRegistry>
+            <ApolloProviderWrapper>
+              {/* <CartProvider> */}
               <Header />
-              <main>{children}</main>
+              {children}
               <Footer />
-            </CartProvider>
-          </ApolloProviderWrapper>
-        </ThemeRegistry>
+              {/* </CartProvider> */}
+            </ApolloProviderWrapper>
+          </ThemeRegistry>
+        </AppRouterCacheProvider>
       </body>
     </html>
   );
